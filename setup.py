@@ -11,6 +11,8 @@ setup(
     long_description_content_type="text/markdown",
     author="Tone Hellström, Henrik Pira",
     author_email="tone.hellstrom@inter.ikea.com, henrik.pira@inter.ikea.com",
-    packages=find_packages(exclude=("tests",)),
+    packages=[
+        "ulogger"
+    ],
     include_package_data=True,
 )
