@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 """UDP Logger class"""
+from re import L
+from syslog import LOG_DEBUG
 from typing import Optional
 
 import socket
@@ -8,6 +10,7 @@ import logging
 DEFAULT_SERVER = "127.0.0.1"
 DEFAULT_PORT = 5005
 
+logging.basicConfig(level=LOG_DEBUG)
 
 class UdpLogger:
 
