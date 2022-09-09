@@ -3,6 +3,7 @@
 from typing import Optional
 
 import socket
+import logging
 
 DEFAULT_SERVER = "127.0.0.1"
 DEFAULT_PORT = 5005
@@ -56,3 +57,4 @@ class UdpLogger:
             message (str): Message
         """
         self._output("INFO", message)
+        logging.info(message)
