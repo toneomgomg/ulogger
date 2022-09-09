@@ -13,8 +13,9 @@ class UdpLogger:
     def __init__(
         self,
         channel: str,
-        server: Optional[str],
-        port: Optional[int]
+        component: Optional[str] = None,
+        server: Optional[str] = None,
+        port: Optional[int] = None
     ) -> None:
         """Initiale UDP logger.
 
@@ -24,6 +25,7 @@ class UdpLogger:
             port (Optional[int]): Server port
         """
         self.channel = channel
+        self.component = component
 
         if server is not None:
             self.server = server
@@ -42,7 +44,7 @@ class UdpLogger:
             prefix (str): Message prefix
             message (str): Message
         """
-        msg = f"[{prefix}] {message}".encode('utf-8')
+        msg = f"{self.channel}:{self.component if self.component is not None else ''}:[{prefix}] {message}".encode('utf-8')
 
         sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
         sock.sendto(msg, (self.server, self.port))
